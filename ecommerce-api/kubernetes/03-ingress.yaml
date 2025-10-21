@@ -1,0 +1,51 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gt2-ecommerce-ingress
+  namespace: gt2-software-apps
+  annotations:
+    #nginx.ingress.kubernetes.io/rewrite-target: "/$2"
+    #nginx.ingress.kubernetes.io/app-root: "/azure-file-service"
+    #nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    #nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    #nginx.ingress.kubernetes.io/enable-cors: "false"
+    #nginx.org/proxy-connect-timeout: "5s"
+    nginx.org/proxy-read-timeout: "5s"
+    #nginx.org/rewrites: "serviceName=api-service rewrite=/;"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: gt2-ecommerce-api.apps.gt2software.dev
+      http:
+        paths:
+          - path: /management
+            pathType: Prefix
+            backend:
+              service:
+                name: gt2-ecommerce-management-service
+                port:
+                  number: 6001
+    - host: gt2-ecommerce-api.apps.gt2software.dev
+      http:
+        paths:
+          - path: /sales
+            pathType: Prefix
+            backend:
+              service:
+                name: gt2-ecommerce-sales-service
+                port:
+                  number: 6002
+    - host: gt2-ecommerce-api.apps.gt2software.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gt2-ecommerce-management-service
+                port:
+                  number: 6001
+  tls:
+    - secretName: gt2-software-apps-tls
+      hosts:
+        - "*.apps.gt2software.dev"
