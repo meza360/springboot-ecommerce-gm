@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.gt2software.ecommerce.model.Product;
 
-public interface IProductService {
+public interface IProductSaleService {
     public List<Product> listProducts();
 
     public Product getProductById(Long productId);

@@ -18,19 +18,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Table(name = "tbl_product")
-public class Product {
+@Table(name = "tbl_app_user")
+public class AppUser {
 
     @Id
-    @Column(name = "product_id")
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+    private Long userId;
     private String name;
-    private String description;
-    private String category;
-    private Double price;
-    @Column(name = "image_url")
-    private String imageUrl;
-
-    // Getters and Setters defined by LOMBOK
+    private String lastName;
+    private String deliveryAddress;
+    private String email;
+    private String dateOfBirth;
+    @Column(name = "password", nullable = false)
+    private String password;
 }

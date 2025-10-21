@@ -1,2 +1,35 @@
-GET /api/product/ HTTP/1.1
+GET /sales/products HTTP/1.1
+Host: localhost:8080
+###
+
+
+POST /management/products HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+    "name": "Bluetooth speaker 1",
+    "description": "Speaker",
+    "category": "audio",
+    "price": 150.99,
+    "imageUrl": "https://www.svgrepo.com/show/420903/audio-hardware-sound.svg"
+}
+###
+
+
+PUT /management/products HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+    "productId": 4,
+    "name": "Bluetooth speaker 2",
+    "description": "Speaker",
+    "category": "audio",
+    "price": 150.99,
+    "imageUrl": "https://www.svgrepo.com/show/420903/audio-hardware-sound.svg"
+}
+###
+
+DELETE /management/products/3 HTTP/1.1
 Host: localhost:8080

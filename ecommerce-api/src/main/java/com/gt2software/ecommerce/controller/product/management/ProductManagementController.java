@@ -9,17 +9,17 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.gt2software.ecommerce.model.Product;
-import com.gt2software.ecommerce.services.product.management.ProductService;
+import com.gt2software.ecommerce.services.product.management.ProductManagementService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-public class ProductController {
+@RequestMapping(path = "/management")
+public class ProductManagementController {
 
     @Autowired
-    private ProductService productService;
+    private ProductManagementService productService;
 
-    @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/products", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, Object>> createProduct(@RequestBody Product data) {
         productService.addProduct(data);
         Map<String, Object> response = new HashMap<String, Object>();
@@ -28,12 +28,20 @@ public class ProductController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/products", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, Object>> updateProduct(@RequestBody Product data) {
         productService.addProduct(data);
         Map<String, Object> response = new HashMap<String, Object>();
-        response.put("message", "Product created successfully");
+        response.put("message", "Product updated successfully");
         response.put("product", data);
+        return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping(value = "/products/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Map<String, Object>> deleteProduct(@PathVariable Long id) {
+        productService.deleteProduct(id);
+        Map<String, Object> response = new HashMap<String, Object>();
+        response.put("message", "Product deleted successfully");
         return ResponseEntity.ok(response);
     }
 

@@ -1,0 +1,21 @@
+GET /sales/order HTTP/1.1
+Host: localhost:8080
+
+###
+
+POST /sales/order HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+    "billTo": "Giovani Meza",
+    "total": 200,
+    "cartItems": [
+        {
+            "productId": 1,
+            "name": "Generic Name",
+            "description": "Generic Description",
+            "price": 20.00
+        }
+    ]
+}
