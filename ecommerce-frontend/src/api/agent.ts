@@ -3,6 +3,7 @@ import { Product } from '../models/Product';
 import { Order } from '@/models/Order';
 
 axios.defaults.baseURL = 'http://192.168.0.63:8080';
+axios.defaults.baseURL = 'https://gt2-ecommerce-api.apps.gt2software.dev';
 
 /* axios.interceptors.response.use(async (response) => {
     try {
