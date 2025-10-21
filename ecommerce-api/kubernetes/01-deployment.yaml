@@ -47,19 +47,19 @@ spec:
           resources:
             limits:
               cpu: "150m"
-              memory: "256Mi"
+              memory: "512Mi"
             requests:
               cpu: "100m"
               memory: "128Mi"
           livenessProbe:
             httpGet:
               path: /version/version
-              port: 80
+              port: 8080
               httpHeaders:
                 - name: X-GT2-APP-CONSUMER
                   value: localk8s
             initialDelaySeconds: 30
-            periodSeconds: 5
+            periodSeconds: 30
             terminationGracePeriodSeconds: 60
       restartPolicy: Always
 ---
@@ -81,7 +81,7 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 20
+          averageUtilization: 75
   behavior:
     scaleDown:
       stabilizationWindowSeconds: 15 # waits 15 seconds before scaling down
@@ -144,19 +144,19 @@ spec:
           resources:
             limits:
               cpu: "150m"
-              memory: "256Mi"
+              memory: "512Mi"
             requests:
               cpu: "100m"
               memory: "128Mi"
           livenessProbe:
             httpGet:
               path: /version/version
-              port: 80
+              port: 8080
               httpHeaders:
                 - name: X-GT2-APP-CONSUMER
                   value: localk8s
             initialDelaySeconds: 30
-            periodSeconds: 5
+            periodSeconds: 30
             terminationGracePeriodSeconds: 60
       restartPolicy: Always
 ---
@@ -178,7 +178,7 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 20
+          averageUtilization: 75
   behavior:
     scaleDown:
       stabilizationWindowSeconds: 15 # waits 15 seconds before scaling down
