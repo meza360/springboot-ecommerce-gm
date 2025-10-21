@@ -1,10 +1,12 @@
 GET /sales/products HTTP/1.1
 Host: localhost:8080
+#Host: gt2-ecommerce-api.apps.gt2software.dev
 ###
 
 
 POST /management/products HTTP/1.1
 Host: localhost:8080
+#Host: gt2-ecommerce-api.apps.gt2software.dev
 Content-Type: application/json
 
 {
@@ -19,6 +21,7 @@ Content-Type: application/json
 
 PUT /management/products HTTP/1.1
 Host: localhost:8080
+#Host: gt2-ecommerce-api.apps.gt2software.dev
 Content-Type: application/json
 
 {
@@ -33,3 +36,4 @@ Content-Type: application/json
 
 DELETE /management/products/3 HTTP/1.1
 Host: localhost:8080
+#Host: gt2-ecommerce-api.apps.gt2software.dev

@@ -1,2 +1,3 @@
 GET /version/version HTTP/1.1
+#Host: gt2-ecommerce-api.apps.gt2software.dev
 Host: localhost:8080
